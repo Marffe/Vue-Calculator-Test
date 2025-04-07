@@ -10,12 +10,14 @@
 
 <style scoped>
     .display {
-        width: 75%;
-        background-color: #222;
-        color: white;
+        width: 90%;
+        height: 2.2rem;
+        background-color: #414d4a;
+        color: rgb(238, 238, 227);
         font-size: 2rem;
         padding: 1rem;
-        text-align: left;
+        text-align: right;
         border-radius: 8px;
+        align-self: center;
     }
 </style>

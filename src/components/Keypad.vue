@@ -1,32 +1,41 @@
 <template>
     <div class="keypad">
-        <button v-for="key in keys" :key="key" @click="handleClick(key)">
-        {{ key }}
+        <button
+            v-for="key in keys"
+            :key="key"
+            @click="key && handleClick(key)"
+            >
+            {{ key }}
         </button>
     </div>
-    </template>
+</template>
 
-    <script setup lang="ts">
+<script setup lang="ts">
     import { defineEmits } from 'vue'
 
     const emit = defineEmits<{
     (e: 'press', value: string): void
     }>()
 
-    const keys = [   
-    '7', '8', '9', '/',
-    '4', '5', '6', '*',
-    '1', '2', '3', '-',
-    '0', '.', '+', '=',
-    'C'
+    const keys = [
+        'Clear', '^', '', '',
+        '7', '8', '9', '/',
+        '4', '5', '6', '*',
+        '1', '2', '3', '-',
+        '0', '00', '.', '+',
+        '='
     ]
     
+    // Uses mathjs library to handle functions
     function handleClick(key: string) {
     emit('press', key)
+    if (key === 'Clear') {
+    emit('press', 'C')  // sends 'C' instead of 'Clear'
     }
-    </script>
+    }
+</script>
     
-    <style scoped>
+<style scoped>
     .keypad {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -38,11 +47,11 @@
     font-size: 1.2rem;
     border: none;
     border-radius: 8px;
-    background-color: #eee;
+    background-color: #4e443c;
     cursor: pointer;
     transition: background-color 0.2s;
     }
     button:hover {
-    background-color: #ccc;
+    background-color: #75604f;
     }
-    </style>
+</style>

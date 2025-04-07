@@ -1,7 +1,9 @@
 <template>
   <div id="app">
-    <Display :value="display" />
-    <Keypad @press="handlePress" />
+    <div class="calculator-box">
+      <Display :value="display" />
+      <Keypad @press="handlePress" />
+    </div>
   </div>
 </template>
 
@@ -33,6 +35,17 @@ function handlePress(key: string) {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.calculator-box {
+  background-color: #333;
+  padding: 1rem;
+  border-radius: 16px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 300px;
 }
 
 .logo {
