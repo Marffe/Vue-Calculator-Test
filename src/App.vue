@@ -9,25 +9,76 @@
 
 <script setup lang="ts">
   import { ref } from 'vue'
+  import { onMounted, onUnmounted } from 'vue'
   import { evaluate } from 'mathjs'
   import Display from './components/Display.vue'
   import Keypad from './components/Keypad.vue'
 
   const display = ref('')
+  let lastOperator = ''
+  let lastOperand = ''
 
 function handlePress(key: string) {
+  // Clear to calculator
   if (key === 'C') {
     display.value = ''
-  } else if (key === '=') {
+    lastOperator = ''
+    lastOperand = ''
+  } else if (key === '←') {
+    display.value = display.value.slice(0, -1)
+  } 
+    else if (key === '=') { // To repeat the last operation
     try {
-      display.value = evaluate(display.value).toString()
+      // If the last operation exists and the display ends in a number:
+      if (lastOperator && lastOperand) {
+        display.value = evaluate(display.value + lastOperator + lastOperand).toString()
+      } else {
+        // First time = is pressed → extract the last operation
+        const match = display.value.match(/([\d.]+)([\+\-\*\/\^])([\d.]+)$/) // This looks so horrible and hard to read, but it works, Supports +, -, *, /, ^
+        if (match) {
+          const [, a, op, b] = match
+          lastOperator = op
+          lastOperand = b
+          display.value = evaluate(display.value).toString()
+        }
+      }
     } catch {
       display.value = 'Error'
     }
   } else {
     display.value += key
+    // Reset repeat-op memory if user types something new
+    if (!['+', '-', '*', '/', '^'].includes(key)) {
+      lastOperator = ''
+      lastOperand = ''
+    }
   }
 }
+
+// Keyboard support
+function handleKeyPress(e: KeyboardEvent) {
+  const key = e.key
+
+  if ('0123456789'.includes(key)) {
+    handlePress(key)
+  } else if (['+', '-', '*', '/', '.', '^', '00'].includes(key)) {
+    handlePress(key)
+  } else if (key === 'Enter' || key === '=') {
+    handlePress('=')
+  } else if (key === 'Backspace') {
+    handlePress('←')
+  } else if (key === 'Escape') {
+    handlePress('C')
+  }
+}
+
+onMounted(() => {
+  window.addEventListener('keydown', handleKeyPress)
+})
+
+onUnmounted(() => {
+  window.removeEventListener('keydown', handleKeyPress)
+})
 </script>
 
 <style scoped>

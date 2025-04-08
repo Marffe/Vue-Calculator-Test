@@ -18,7 +18,7 @@
     }>()
 
     const keys = [
-        'Clear', '^', '', '',
+        'Clear', '', '^', '←',
         '7', '8', '9', '/',
         '4', '5', '6', '*',
         '1', '2', '3', '-',
@@ -32,6 +32,9 @@
     if (key === 'Clear') {
     emit('press', 'C')  // sends 'C' instead of 'Clear'
     }
+
+    
+
     }
 </script>
     
