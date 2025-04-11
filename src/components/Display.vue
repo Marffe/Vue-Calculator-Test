@@ -19,5 +19,8 @@
         text-align: right;
         border-radius: 8px;
         align-self: center;
+        overflow-x: auto;
+        white-space: nowrap;
+        word-break: keep-all;
     }
 </style>
