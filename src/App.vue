@@ -127,26 +127,13 @@
 }
 
 .calculator-box {
-  background-color: #333;
+  background-color: #2a332c;
   padding: 1rem;
   border-radius: 16px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  width: 300px;
-}
-
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
+  width: 315px;
 }
 </style>

@@ -4,6 +4,10 @@
             v-for="key in keys"
             :key="key"
             @click="key && handleClick(key)"
+            :class="{
+                'clear-btn': key === 'Clear',
+                'equal-btn': key === '='
+            }"
             >
             {{ key }}
         </button>
@@ -50,11 +54,19 @@
     font-size: 1.2rem;
     border: none;
     border-radius: 8px;
-    background-color: #4e443c;
+    background-color: #333d30;
     cursor: pointer;
-    transition: background-color 0.2s;
+    transition: background-color;
     }
     button:hover {
-    background-color: #75604f;
+    background-color: #465741;
+    }
+
+    .clear-btn { background-color: rgb(158, 65, 65); }
+    .clear-btn:hover { background-color: rgb(110, 48, 48); }
+
+    .equal-btn {
+        grid-column: span 2;
+        font-weight: bold;
     }
 </style>
