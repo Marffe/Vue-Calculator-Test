@@ -11,16 +11,19 @@
 <style scoped>
     .display {
         width: 90%;
-        height: 2.2rem;
-        background-color: #414d4a;
+        height: 2.4rem;
+        background-color: #7da89e;
         color: rgb(238, 238, 227);
-        font-size: 2rem;
-        padding: 1rem;
+        font-size: 3rem;
+        font-family: 'DigitalDisplay', monospace;
+        padding: 0.3rem 0.8rem 0.3rem 0.8rem;
+        line-height: 2.2rem;
         text-align: right;
-        border-radius: 8px;
+        border-radius: 6px;
         align-self: center;
-        overflow-x: auto;
+        overflow: hidden;
         white-space: nowrap;
         word-break: keep-all;
+        cursor: default;
     }
 </style>

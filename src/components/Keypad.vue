@@ -52,6 +52,7 @@
     button {
     padding: 1rem;
     font-size: 1.2rem;
+    font-family: 'ArchivoBold', Arial, sans-serif;
     border: none;
     border-radius: 8px;
     background-color: #333d30;
