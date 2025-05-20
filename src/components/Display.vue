@@ -12,8 +12,8 @@
     .display {
         width: 90%;
         height: 2.4rem;
-        background-color: #7da89e;
-        color: rgb(238, 238, 227);
+        background-color: #C3DADA;
+        color: #131C1C;
         font-size: 3rem;
         font-family: 'DigitalDisplay', monospace;
         padding: 0.3rem 0.8rem 0.3rem 0.8rem;

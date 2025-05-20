@@ -127,7 +127,7 @@
 }
 
 .calculator-box {
-  background-color: #2a332c;
+  background-color: #3a3644;
   padding: 1rem;
   border-radius: 16px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
